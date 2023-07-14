@@ -1,0 +1,104 @@
+<header class="header autohide">
+
+    <!-- <img src="images/logo.jpeg"> -->
+    <a href="/" class="logo navbar-items">Hun<span class="theme">g</span>rezy</a>
+
+    <nav class="navbar">
+        <a href="/" class="navbar-items">Home</a>
+        <a href="/Restaurants" class="navbar-items">Order Food</a>
+        <a href="/Recipes" class="navbar-items">Recipes</a>
+        <a href="/Account" class="navbar-items">Account</a>
+        <% if(currentUser){ %>
+        <a href="/logout" class="login-btn navbar-items">Logout</a>
+        <%}else{ %>
+            <a href="/login" class="login-btn navbar-items">Login</a>
+        <%}%>
+    </nav>
+
+    <div class="profile">
+        <img src="/CUSTOMER/images/user.png" alt="" height="30px" class="user-pic" onmouseover="toggleMenu()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <img src="/CUSTOMER/images/cart.png" height="30px" onclick="openNav()" class="cart-pic">
+    </div>
+
+    <div class="hamburger">
+        <img src="/CUSTOMER/images/nav.png" alt="">
+    </div>
+
+    <div class="sub-menu-wrap" id="submenu">
+        <div class="sub-menu">
+            <div class="user-info">
+                <img src="/CUSTOMER/images/user.png" alt="">
+                <% if(currentUser){ %>
+                <h3><%=currentUser.name%></h3>
+                <%}else{ %>
+                <h3>User</h3>
+                <%}%>
+            </div>
+            <hr>
+
+            <% if(currentUser) { %>
+                <a href="#" class="sub-menu-link">
+                    <img src="/CUSTOMER/images/profile.png" alt="">
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+            <% } else { %>
+                <a href="/login" class="sub-menu-link">
+                    <img src="/CUSTOMER/images/profile.png" alt="">
+                    <p>Edit Profile</p>
+                    <span>></span>
+                </a>
+            <% } %>
+
+            <% if(currentUser) { %>
+                <a href="#" class="sub-menu-link">
+                    <img src="/CUSTOMER/images/settings.png" alt="">
+                    <p>Settings & Privacy</p>
+                    <span>></span>
+                </a>
+            <% } else { %>
+                <a href="/login" class="sub-menu-link">
+                    <img src="/CUSTOMER/images/settings.png" alt="">
+                    <p>Settings & Privacy</p>
+                    <span>></span>
+                </a>
+            <% } %>
+            
+
+            <a href="/helpAndSupport" class="sub-menu-link">
+                <img src="/CUSTOMER/images/help.png" alt="">
+                <p>Help & Support</p>
+                <span>></span>
+            </a>
+
+            <%if(currentUser){%>
+                <a href="/logout" class="sub-menu-link">
+                    <img src="/CUSTOMER/images/logout.png" alt="">
+                    <p>Log out</p>
+                    <span>></span>
+                </a>
+            <% } else { %>
+                <a href="/login" class="sub-menu-link">
+                    <img src="/CUSTOMER/images/logout.png" alt="">
+                    <p>Log In</p>
+                    <span>></span>
+                </a>
+            <%}%>
+            
+        </div>
+    </div>
+
+    <div class="cart-wrap" id="cart">
+        
+        <div class="cart-menu">
+            <h3>Announcements<i class="fa-solid fa-megaphone ms-3"></i></h3>
+            <div class="announcement mt-2 mb-2">
+                <%announcements.forEach(announcement=>{%>
+                    <h6><%=announcement.subject%></h6>
+                <%});%>
+            </div>
+           
+        </div>
+    </div>
+
+</header>

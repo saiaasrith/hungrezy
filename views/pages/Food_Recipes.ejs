@@ -1,0 +1,123 @@
+<%- include('../partials/head.ejs') %>
+
+    <link rel="stylesheet" href="/CUSTOMER/Order_Food/Food_Recipes.css"/>
+    <script src="/CUSTOMER/Order_Food/Food_Recipes.js" defer></script>
+</head>
+<body onclick="closeMenu()">
+
+    <%- include('../partials/navbar.ejs') %>
+
+    <div class="container">
+
+        <section>
+            <div class="container-2">
+                <section>
+                    <div class="intro">
+                        <div class="intro-text">
+                            <h1><strong>Food Recipes</strong></h1>
+                            <h2 class="mb-5">Let's start <br> cooking with <br> popular recipes</h2>
+                            <a href="#one">All Recipes</a>
+                            <a href="#2">Popular Recipes</a>
+                        </div>
+                    </div>
+                </section> 
+
+                <section id="one">
+                    <div class="recipes-container">
+                        <h1 class="heading ms-4">Recipes</h1>
+                        <div class="recipes-wrapper mt-4">
+
+                            <%FoodRecipes.forEach((item)=>{ %>
+                               
+                                <div class="food-card swiper-slide fc2">
+                                    <img src="data:<%=item.foodimage.contentType %>;base64,<%= item.foodimage.data.toString('base64') %>" alt="">
+                                    <div class="food-content middle">
+                                        <h1><strong><%=item.recipe.name%></strong></h1>
+                                        <p><%=item.recipe.description%></p>
+                                        <a href="/View_Recipe?id=<%=item.recipe.recipeID%>" ><button>View Recipe</button></a> 
+                                    </div>
+                                </div>
+                            <%})%>
+
+                           
+
+                            
+
+                        </div>
+                    </div>
+                </section> 
+            </div>
+        </section>
+        
+        <section>
+            <div class="container-2">
+                <section id="2">
+                    <div class="slide-container swiper ">
+                        <h1 class="heading"><strong>Non Vegetarian</strong></h1>
+                        <div class="slide-content mt-4">
+                            <div class="swiper-wrapper">
+
+                                <%nonVegRecipes.forEach((item)=>{ %>
+                                  
+                               
+                                        <div class="food-card swiper-slide">
+                                            <img src="data:<%=item.foodimage.contentType %>;base64,<%= item.foodimage.data.toString('base64') %>" alt="">
+                                            <div class="food-content middle">
+                                                <h1><strong><%=item.recipe.name%></strong></h1>
+                                                <p><%=item.recipe.description%></p>
+                                                <a href="/View_Recipe?id=<%=item.recipe.recipeID%>"><button>View Recipe</button></a> 
+                                            
+                                            </div>
+                                        </div>
+                                  
+                                <%})%>
+                                                                 
+                            </div>
+                            <div class="swiper-button-next btn-swipe"></div>
+                            <div class="swiper-button-prev btn-swipe"></div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section>
+                    <div class="slide-container swiper ">
+                        <h1 class="heading"><strong>Vegetarian</strong></h1>
+                        <div class="slide-content mt-4">
+                            <div class="swiper-wrapper">
+
+                                <%VegRecipes.forEach((item)=>{ %>
+                                   
+                               
+                                        <div class="food-card swiper-slide">
+                                            <img src="data:<%=item.foodimage.contentType %>;base64,<%= item.foodimage.data.toString('base64') %>" alt="">
+                                            <div class="food-content middle">
+                                                <h1><strong><%=item.recipe.name%></strong></h1>
+                                                <p><%=item.recipe.description%></p>
+                                                <a href="/View_Recipe?id=<%=item.recipe.recipeID%>"><button>View Recipe</button></a> 
+                                            
+                                            </div>
+                                        </div>
+                                   
+                                <%})%>
+                                                                 
+                            </div>
+                            <div class="swiper-button-next btn-swipe"></div>
+                            <div class="swiper-button-prev btn-swipe"></div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </section>
+            
+
+            </div>
+        </section>  
+        
+       
+    </div>
+    <%- include('../partials/footer.ejs') %>
+   
+    <script src="CUSTOMER/customer.js"></script>
+</body>
+</html>

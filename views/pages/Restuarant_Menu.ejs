@@ -1,0 +1,357 @@
+<%- include('../partials/head.ejs') %>
+
+    <link rel="stylesheet" href="/CUSTOMER/Order_Food/Restuarant_Menu.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.9/ejs.min.js"></script>
+ 
+</head>
+<body onclick="closeMenu()">
+    <%- include('../partials/navbar.ejs') %>
+    <div class="menu-header">
+        <span>Address</span>
+        <h1><strong><%=Restuarant.name%></strong></h1>
+        <p>
+            <span><%=Restuarant.type%></span><br>
+            <span><%=Restuarant.location%></span><br><br>
+            <span><i class="fa-regular fa-circle-info fa-lg"></i> Based on distance, an additional delivery fee will apply</span>
+        </p>
+        <div class="menu-sub">
+            <h6><strong><i class="fa-duotone fa-clock fa-lg"></i> <%=Restuarant.time%> MIN</strong></h6>
+            <h6><strong><i class="fa-duotone fa-indian-rupee-sign fa-lg"></i> <%=Restuarant.cost%> for one</strong></h6>
+           
+        </div>
+        
+    </div>
+
+    <div class="tabs-menu">
+        <button class="tab-link" onclick="openTab(0)" id="default-tab">Menu</button>
+        <button class="tab-link" onclick="openTab(1)">Table Booking</button>
+    </div>
+
+    <div class="table-booking mt-4 mb-4">
+            <h3>Table Booking</h3>
+    </div>
+
+    <div class="menu-container" id="menu-container">
+
+        <div class="mt-4 mb-4">
+            
+            <div class="drop">
+                <h5 data-bs-toggle="collapse" data-bs-target="#recomended" style="display: inline-block;width: 95%;">Recommended</h5>
+                <span  data-bs-toggle="collapse" data-bs-target="#recomended"><i class="fa-duotone fa-caret-down fa-lg"></i></span>
+            </div>
+
+            <div id="recomended" class="collapse show">
+                <% recomended.forEach((food)=>{ %>
+
+                    <div class="card" style="width:100%;height:150px;">
+
+                        <div class="card-body">
+                        
+                            <img src="data:<%=food.image.contentType %>;base64,<%= food.image.data.toString('base64') %>" alt="Card image" height="120px" width="120px">
+                        
+                            <div class="fooditem-data">
+                                <span class="<%=food.type%>"><i class="fa-regular fa-square-o"></i></span>
+                                <span style="color: #E38B29;font-size:small;"><strong>bestseller</strong></span>
+                                <h5 class="card-title mt-1"><%=food.item.name%></h5>
+                                <p>Rs <%=food.item.cost%></p>
+                                <p class="food-description"><%=food.item.description%></p>
+                            </div>
+                            
+                            <button class="add"><i class="fa-solid fa-minus"></i><p class="add-text ms-2 me-2" id="<%=food.item._id%>" onclick="addToCart(id)"> Add </p><i class="fa-solid fa-plus"></i></button>
+
+                        </div>
+                    
+                    </div>
+                    <hr>
+                <%});%>
+            </div>
+
+        </div>
+
+        <% Menu.forEach((category)=>{ %>
+
+            <div>
+
+                <div class="drop">
+                    <h5 data-bs-toggle="collapse" data-bs-target="#<%=category.categoryName%>" style="display: inline-block;width: 95%;"><%=category.categoryName%></h5>
+                    <span  data-bs-toggle="collapse" data-bs-target="#<%=category.categoryName%>"><i class="fa-duotone fa-caret-down fa-lg"></i></span>
+                    <hr>
+                </div>
+
+                <div class="collapse" id="<%=category.categoryName%>" >
+                    <% category.items.forEach((food)=>{ %>
+
+                    <div class="card" style="width:100%;height:150px;">
+
+                        <div class="card-body">
+                        
+                            <img src="data:<%=food.image.contentType %>;base64,<%= food.image.data.toString('base64') %>" alt="Card image" height="120px" width="120px">
+                        
+                            <div class="fooditem-data">
+                                <span class="<%=food.item.type%>"><i class="fa-regular fa-square-o"></i></span>
+                                <span style="color: #E38B29;font-size:small;"><strong>bestseller</strong></span>
+                                <h5 class="card-title mt-1"><%=food.item.name%></h5>
+                                <p>Rs <%=food.item.cost%></p>
+                                <p class="food-description"><%=food.item.description%></p>
+                            </div>
+                            
+                            <button class="add"><i class="fa-solid fa-minus"></i><p class="add-text ms-2 me-2" id="<%=food.item._id%>" onclick="addToCart(id)"> Add </p><i class="fa-solid fa-plus"></i></button>
+
+                        </div>
+                    
+                    </div>
+                    <hr>
+                    <%});%>
+                </div>
+
+            </div>
+        <%})%>
+
+        <div id="cart-message" data-bs-toggle="modal" data-bs-target="#modal-cart" onclick="displayCart()">
+            <h4>Items added to cart!</h4>
+            <h5>View Cart &nbsp;<i class="fa-solid fa-arrow-right fa-lg"></i></h5>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="modal-cart">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+            
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                    <h3 class="modal-title"><strong>Cart</strong></h3>
+                    <div class="steps">
+                        <h1><i class="fa-solid fa-burger-soda"></i></h1>
+                        <h1><i class="fa-solid fa-location-dot"></i></h1>
+                        <h1><i class="fa-duotone fa-wallet"></i></h1>
+                   </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+            
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                       
+                       <div class="step1">
+                                
+                       </div>
+                       <div class="step2">
+                            <div class="bill">
+                              
+                            </div>
+                            <div class="user-details">
+                                <h5> Address :</h5>
+                                <input style="width: 20px;height: 15px;" type="radio" id="address" name="address" value="<%currentUser.address%>, " checked>
+                                <label for="address"><%=currentUser.address%>...</label>
+                                
+                            </div>
+                            <div class="payments">
+                                <h5> Payments :</h5>
+                                <input style="width: 20px;height: 15px;" type="radio" id="net-banking" name="payment" value="net-banking">
+                                <label for="net-banking">Net Banking / Credit / Debit Cards</label><br>
+                                <input style="width: 20px;height: 15px;" type="radio" id="upi" name="payment" value="upi">
+                                <label for="upi">UPI </label><br>
+                                <input style="width: 20px;height: 15px;" type="radio" id="cash" name="payment" value="cash" checked>
+                                <label for="cash">Cash</label>
+                            </div>
+                            <div class="place-order mt-3">
+                                <form action="" method="post" id="order-form">
+                                    <button type="button"  data-bs-dismiss="modal" onclick="placeOrder()">Place Order</button>
+                                </form>
+                            </div>
+                       </div>
+                    </div>
+            
+                    <!-- Modal footer -->
+                    <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div> -->
+            
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+   
+
+    <%- include('../partials/footer.ejs') %>
+
+    <script>
+        var cartItemsCount = 0;
+        const cartMessage = document.getElementById("cart-message");
+        const cartItems= [];let cartItems2= [];
+        const quantities = new Map();
+        const menuItems = JSON.parse("<%- MenuItems %>");
+        let subtotal=0,deliveryFee=40,gst,grandTotal,method="POD";
+        const orderForm = document.getElementById('order-form');
+        function placeOrder(){
+            if(!cartItems2.length>0)return;
+            if("<%- currentUser %>"){
+                console.log("<%- currentUser %>",1)
+                let postString = `/order?cid=${"<%- currentUser._id %>"}&rid=${"<%- Restuarant.email %>"}&cart=${JSON.stringify( cartItems2 )}&pay=${grandTotal}&method=${method}`;
+                orderForm.setAttribute("action",postString);
+                orderForm.submit();
+            }else{
+                let postString = '/Login';
+                orderForm.setAttribute("action",postString);
+                orderForm.setAttribute("method","get");
+                orderForm.submit();
+            }
+           
+        }
+
+    
+        function addToCart(id){
+            var count = 1;
+            cartItemsCount++;
+            const mid = document.getElementById(id);
+            menuItems.forEach(element => {
+                if(element._id == id){
+                    cartItems.push(element);
+                }
+            });
+            quantities.set(id,count);
+            const minus = mid.previousSibling;
+            mid.innerHTML = count;
+            const plus = mid.nextSibling;
+            minus.style.display="inline";
+            plus.style.display="inline";
+            minus.addEventListener('click',()=>{
+                if(count>0){
+                    count--;
+                    quantities.set(id,count);
+                    cartItemsCount--;
+                }
+                mid.innerHTML=count;
+                if(cartItemsCount>0)cartMessage.style.display = "block";
+                else cartMessage.style.display = "none";
+                if(count<=0){
+                    mid.innerHTML="Add"
+                    minus.style.display="none";
+                    plus.style.display="none";
+                    removeCartItem(id);
+                }
+                else{
+                minus.style.display="inline";
+                plus.style.display="inline";
+                }
+            });
+            plus.addEventListener('click',()=>{
+                count++;
+                quantities.set(id,count);
+                cartItemsCount++;
+                mid.innerHTML=count
+                if(cartItemsCount>0)cartMessage.style.display = "block";
+                else cartMessage.style.display = "none";
+            });
+            if(cartItemsCount>0)cartMessage.style.display = "block";
+            else cartMessage.style.display = "none";
+            
+        }
+        
+        if(cartItemsCount>0)cartMessage.style.display = "block";
+        else cartMessage.style.display = "none";
+
+        const cartContainer = document.querySelector(".step1");
+        const billContainer = document.querySelector(".bill");
+       
+       
+
+        function displayCart(){
+            cartItems2=[];
+            cartItems.map(item=>{
+                cartItems2.push({foodItem : item.name,quantity : quantities.get(item._id)})
+            })
+         
+            cartContainer.innerHTML = cartItems.map(item=>`
+                                <div class="cart-item-card mb-3">
+                                    <div class="item-left">
+                                        <h5>${item.name}</h5>
+                                        <p>Rs ${item.cost} <br>quantity : ${quantities.get(item._id)}</p>  
+                                    </div>
+                                    <div class="item-right">
+                                        <button onclick='removeCartItem("${item._id}")'>Remove <i class="fa-solid fa-xmark"></i></button>
+                                        <span style="color: #E38B29;" class="mt-2"><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;${item.cost*quantities.get(item._id)}</span>
+                                    </div>
+                                </div>
+            `
+            ).join('');
+
+            subtotal=0,deliveryFee=40,gst,grandTotal,method="POD";
+            cartItems.forEach(item=>{
+                subtotal=subtotal+(item.cost*quantities.get(item._id));
+            })
+            gst= 0.18*subtotal;
+            grandTotal = subtotal+gst+deliveryFee;           
+
+
+            billContainer.innerHTML=`
+                            <table>
+                                <tr>
+                                    <td><h6>Subtotal </h6></td>
+                                    <td><h6> :&nbsp;&nbsp; Rs ${subtotal}</h6></td>
+                                </tr>
+                                <tr>
+                                    <td>GST </td>
+                                    <td> :&nbsp;&nbsp;&nbsp; Rs ${gst.toPrecision(4)}</td>
+                                </tr>
+                                <tr>
+                                    <td>Deliver Fee </td>
+                                    <td> :&nbsp;&nbsp;&nbsp; Rs ${deliveryFee}</td>
+                                </tr>
+                                <tr>
+                                    <td><hr></td>
+                                    <td><hr></td>
+                                </tr>
+                                <tr>
+                                    <td><h5>Grand Total &nbsp;</h5></td>
+                                    <td><h5> :&nbsp;&nbsp; Rs ${grandTotal.toPrecision(4)}</h5></td>
+                                </tr>
+                            </table>` 
+                            
+                            
+           
+
+            
+        }
+
+        var removeCartItem = function(id){
+            for(let i=0;i<cartItems.length;i++){
+                if(cartItems[i]?._id==id){
+                    delete cartItems[i];
+                }
+            }
+
+            for(let i=0;i<cartItems2.length;i++){
+                if(cartItems2[i].foodItem?._id==id){
+                    delete cartItems2[i];
+                }
+            }
+           
+            displayCart();
+        }
+
+        document.getElementById("default-tab").click();
+
+        function openTab(tabno){
+            const menuContainer = document.querySelector(".menu-container");
+            const tableBooking = document.querySelector(".table-booking");
+            const tabLinks = document.querySelectorAll(".tab-link");
+            if(tabno==0){
+                menuContainer.style.display="block";
+                tableBooking.style.display="none";
+                tabLinks[0].style.backgroundColor = "#FDEEDC";
+                tabLinks[1].style.backgroundColor = "#FFD8A9";
+            }
+            else if(tabno==1){
+                menuContainer.style.display="none";
+                tableBooking.style.display="block";
+                tabLinks[1].style.backgroundColor = "#FDEEDC";
+                tabLinks[0].style.backgroundColor = "#FFD8A9";
+            }
+           
+        }
+    </script>
+     <script src="/CUSTOMER/customer.js"></script>
+</body>
+</html>

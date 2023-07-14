@@ -1,0 +1,38 @@
+<%- include('../partials/head.ejs') %>
+
+    <link rel="stylesheet" href="/CUSTOMER/Order_Food/View_Recipe.css">
+</head>
+<body onclick="closeMenu()">
+
+    <%- include('../partials/navbar.ejs') %>
+        <div class="head-container">
+            <img src="data:<%=image.contentType %>;base64,<%=image.data.toString('base64') %>" alt="Food Image">
+            <div class="sub-head">
+                <div class="food-title"><h1><strong><%=foodItem.name%></strong></h1></div>
+                <p><%=foodItem.description%></p>
+            </div>
+        </div>
+
+        <div class="recipe-container">
+            <div class="recipe-info">
+                <h3><strong>Quick Info : </strong></h3>
+                <pre>
+                    TOTAL TIME : <%=foodItem.time%>
+                    SERVINGS   : <%=foodItem.serves%>
+                </pre>
+            </div>
+            <div class="ingredients">
+                <h3><strong>Ingredients : </strong></h3>
+                <pre><%=foodItem.ingredients%></pre>
+            </div>
+            <div class="procedure mt-4 mb-4">
+                <h3><strong>Food Recipe : </strong></h3>
+                <pre ><%=foodItem.step1%></pre>
+                <pre ><%=foodItem.step2%></pre>
+                <pre ><%=foodItem.step3%></pre>
+            </div>
+        </div>
+        <%- include('../partials/footer.ejs') %>
+        <script src="/CUSTOMER/customer.js"></script>
+</body>
+</html>

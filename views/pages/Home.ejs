@@ -1,0 +1,50 @@
+<%- include('../partials/head.ejs') %>
+
+    <link rel="stylesheet" href="/CUSTOMER/Home.css">
+    <script src="/CUSTOMER/Home.js" defer></script>
+    <script src="CUSTOMER/customer.js" defer></script> 
+</head>
+<body onclick="closeMenu()">
+    <%- include('../partials/navbar.ejs') %>
+    <div class="preloader">
+        <img src="/Login/images/preloader.gif" alt="">
+      </div>
+
+    <div class="section1 mt-5">
+       
+        <img src="/CUSTOMER/Order_Food/images/image1.png" alt="" >
+       
+
+        <div class="search-box">
+            <h1 class="mb-5">All Your Favourite<br> Restaurants are here</h1>
+            <div class="search">
+                <a href="/Restaurants">Find Restaurants</a>
+               
+            </div>
+        </div>
+
+    </div>
+    <div class="section1">
+        <div class="recipe-text">
+            <h1>Find All Recipes <br> you want here</h1>
+            <a href="/Recipes">Find Recipes</a>
+        </div>
+        <img src="/CUSTOMER/Order_Food/images/image5.jpg" alt="" >
+    </div>
+    <div class="section1">
+        <img src="/CUSTOMER/Order_Food/images/restaurant-bg.jpg" alt="" >
+        <div class="recipe-text">
+            <h1>Grow your bussiness <br> with Hungrezy</h1>
+            <a href="/Restaurant_Registration">Register Here</a>
+        </div>
+    </div>
+    <div class="section1 mb-4">
+        <div class="recipe-text">
+            <h1>Register your Organization & <br> Get Donations</h1>
+            <a href="/Organization_Register">Register Here</a>
+        </div>
+        <img src="/CUSTOMER/Order_Food/images/abt4.jpg" alt="" >
+    </div>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>

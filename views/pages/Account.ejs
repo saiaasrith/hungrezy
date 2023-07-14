@@ -1,0 +1,134 @@
+<%- include('../partials/head.ejs') %>
+
+    <link rel="stylesheet" href="/CUSTOMER/Account.css">
+    <script src="/CUSTOMER/Account.js" defer></script>
+
+</head>
+<body onclick="closeMenu()">
+
+    <%- include('../partials/navbar.ejs') %>
+    
+    <div class="container-1">
+        <div class="container-2">
+            <div id="sub1">
+                <h2>Personal Info </h2><hr>
+                <% if(currentUser){ %>
+                    <form action="/updateUserProfile" method="post">
+                        <input type="text" class="form-control fc1 form-control-lg" placeholder="<%=currentUser.name%>" name="name" ><br>
+                        <input type="text" class="form-control fc1 form-control-lg" placeholder="<%=currentUser.gender%>" name="gender" >
+                        <input type="tel" class="form-control fc1 form-control-lg" placeholder="<%=currentUser.mobileNumber%>" disabled>
+                        <input type="email" class="form-control fc2 form-control-lg" placeholder="<%=currentUser.email%>" name="email" >
+                        <input type="text" class="form-control fc1 form-control-lg" placeholder="************" name="password" ><br>
+                        <button type="submit" class="btn">Update</button>
+                    </form>
+                    
+                <%}else{%>
+                <input type="text" class="form-control fc1 form-control-lg" placeholder="User Name" disabled><br>
+                <input type="text" class="form-control fc1 form-control-lg" placeholder="Gender" disabled>
+                <input type="tel" class="form-control fc1 form-control-lg" placeholder="Mobile Number" disabled>
+                <input type="email" class="form-control fc2 form-control-lg" placeholder="Email" disabled>
+                <input type="text" class="form-control fc1 form-control-lg" placeholder="**********">
+                
+                <%}%>
+            </div>
+            <div id="sub2">
+                <h2>Address Book</h2><hr>
+                <form action=<%if(currentUser){%>"/updateCustomerAddress"<%}else{%>"/Login"<%}%> method="post">
+                    <textarea type="text" class="form-control fc2 form-control-lg" placeholder="Address" name="address" required></textarea>
+                    <input type="text" class="form-control fc1 form-control-lg" placeholder="State" name="state" required>
+                    <input type="number" class="form-control fc1 form-control-lg" placeholder="Pin Code" name="pincode" required>
+                    <input type="text" class="form-control fc1 form-control-lg" placeholder="Country"  name="country" required><br>
+                    <button type="submit" class="btn">Update</button>
+                </form>
+                
+            </div>
+            <div id="sub3">
+                <h2>Your Orders</h2><hr>
+                <% if(orders.length==0){%>
+                    <p>Your Orders are Empty!</p>
+                <%}else{%>
+                   <% orders.forEach(order=>{%>
+                        <div>
+                            <button type="button" class="order-btn" data-bs-toggle="collapse" data-bs-target="#ID<%=order.order._id%>" >View order from <%= order.restaurant.name%></button>
+                            <div id="ID<%=order.order._id%>" class="collapse">
+                              
+                                    <h6>Order Details</h6>
+                                    <% order.order.cart.forEach(item=>{%>
+                                        <span><%=item.quantity%> x <%=item.foodItem%></span><br>
+                                    <%});%>
+                                    <p>Payable Amount : Rs <%=order.order.paymentDetails.payment%><br>Payment Method : <%=order.order.paymentDetails.method%><br>Order Status : <%=order.order.orderStatus%></p>
+                                    <hr>
+                              
+                            </div>
+                        </div>
+                    <%});%>
+                <%}%>
+            </div>
+            <div id="sub4">
+                <h2>Settings</h2><br><br>
+                <a href="/About" class="ms-3">About</a><hr>
+                <a  href="/helpAndSupport" class="ms-3">Help & Support</a><hr>
+                <a  href="/deleteUserAccount" class="ms-3">Delete Account</a><hr>
+                <a href="/logout" class="ms-3">Logout</a><hr>
+            </div>
+        </div>
+        <div class="container-3">
+            <h1 id="i1"><i class="fa-solid fa-user"></i></h1>
+            <h1 id="i2"><i class="fa-sharp fa-solid fa-location-dot"></i></h1>
+            <h1 id="i3"><i class="fa-sharp fa-solid fa-bags-shopping"></i></h1>
+            <h1 id="i4"><i class="fa-solid fa-gear"></i></h1>
+        </div>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+    <script src="/CUSTOMER/customer.js"></script>
+    <script>
+        let showOrders = "<%- showOrders %>";
+        const icon1 = document.getElementById('i1');
+    const icon2 = document.getElementById('i2');
+    const icon3 = document.getElementById('i3');
+    const icon4 = document.getElementById('i4');
+
+
+
+    const sub1 = document.getElementById('sub1');
+    const sub2 = document.getElementById('sub2');
+    const sub3 = document.getElementById('sub3');
+    const sub4 = document.getElementById('sub4');
+
+    if(showOrders=="yes"){
+        sub2.style.display="none";
+        sub1.style.display="none";
+        sub4.style.display="none";
+        sub3.style.display="block";
+    }
+
+    icon1.addEventListener('click',()=>{
+        sub2.style.display="none";
+        sub3.style.display="none";
+        sub4.style.display="none";
+        sub1.style.display="block";
+    });
+
+    icon2.addEventListener('click',()=>{
+        sub1.style.display="none";
+        sub3.style.display="none";
+        sub4.style.display="none";
+        sub2.style.display="block";
+    });
+
+    icon3.addEventListener('click',()=>{
+        sub2.style.display="none";
+        sub1.style.display="none";
+        sub4.style.display="none";
+        sub3.style.display="block";
+    });
+
+    icon4.addEventListener('click',()=>{
+        sub2.style.display="none";
+        sub3.style.display="none";
+        sub1.style.display="none";
+        sub4.style.display="block";
+    });
+    </script>
+</body>
+</html>
