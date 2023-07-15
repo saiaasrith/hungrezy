@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    background-color: #FFD8A9;
+    font-family: "Ubuntu", sans-serif;
+    padding-top: 0px;
+}
+
+.container-1{
+    background: #FDEEDC;
+    width: fit-content;
+    margin: auto;
+    margin-top: 19vh;
+    height: fit-content;
+    position: relative;
+    margin-bottom: 6rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+.container-2{
+    width: 60vw;
+    height: 70vh;
+    border-radius: 10px;
+    padding: 20px;
+    padding-left: 12vw;
+    overflow-y: auto;
+}
+
+.container-3{
+    position: absolute;
+    width: 5vw;
+    height :80vh;
+    top: -5vh;
+    left :5vw;
+    background-color:  #E38B29;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.container-3 h1{
+    color: white;
+    width: fit-content;
+    margin: auto;
+    cursor: pointer;
+}
+
+.fc1{
+    width: 40%;
+    display: inline-block;
+    background-color: #FFD8A9;
+}
+
+.fc2{
+    width: 85%;
+    background-color: #FFD8A9;
+}
+
+.form-control{
+    margin: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    text-indent: 10px;
+}
+
+
+#sub2{
+    display: none;
+}
+
+#sub3{
+    display: none;
+    overflow-y: auto;
+}
+
+#sub4{
+    display: none;
+}
+
+#sub4 a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+ .btn{
+    margin-left: 40%;
+    margin-top: 5%;
+    color: white;
+    background-color: #E38B29;
+    padding: 10px;
+    font-size: larger;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn:hover{
+    background-color: #E38B29;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container-2 h2{
+    color: #E38B29;
+    font-weight: bolder;
+    margin-left: 8px;
+}
+
+.order-btn{
+    width: 100%;
+    height: fit-content;
+    border: none;
+    font-size: large;
+    padding: 10px;
+}

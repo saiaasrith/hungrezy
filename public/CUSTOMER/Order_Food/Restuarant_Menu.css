@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+
+body{
+    background-color: #FFD8A9;
+    font-family: "Ubuntu", sans-serif;
+}
+
+.menu-sub{
+   
+    border-bottom: 1px dotted gray;
+    border-top: 1px dotted gray;
+}
+
+.menu-sub h6{
+    display: inline-block;
+    margin: 20px;
+}
+
+.menu-header h1{
+    color: #E38B29;
+}
+
+.menu-header span{
+    color: gray;
+}
+
+.menu-header{
+    width: 50vw;
+    margin: auto;
+    margin-top: 6rem;
+   
+}
+
+.tabs-menu{
+    display: flex;
+    justify-content: space-around;
+    width: 50vw;
+    margin: auto;
+}
+
+.tab-link{
+    width: 100%;
+    height: 50px;
+    background-color:#FDEEDC;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+}
+
+.table-booking{
+    width: 50vw;
+    margin: auto;
+    height: 100vh;
+}
+
+.menu-container{
+    width: 50vw;
+    margin: auto;
+    margin-bottom: 6rem;
+}
+
+.card{
+    border: none;
+    background-color: #FDEEDC;
+}
+
+.card-body{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+}
+
+.fooditem-data{
+    width: 60%;
+    padding: 0px 30px;
+}
+
+.food-description{
+    color: gray;
+}
+
+.drop i{
+    cursor: pointer;
+}
+
+.nonveg{
+    color: red;
+}
+
+.veg{
+    color: green;
+}
+
+.add{
+    width: 100px;
+    height: 40px;
+    margin-top: 50px;
+    background-color: #E38B29;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.drop{
+    cursor: pointer;
+}
+
+.add i{
+    display: none;
+    color: white;
+    padding: 5px;
+    z-index: 1;
+}
+
+.add p{
+    display: inline;
+}
+
+#cart-message{
+    width: 50vw;
+    margin: auto;
+    height: 60px;
+    background-color:#E38B29;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: fixed;
+    top: 90%;
+    display: none;
+    cursor: pointer;
+}
+
+#cart-message h4{
+    display: inline-block;
+    width: 80%;
+    color: white;
+}
+
+#cart-message h5{
+    display: inline;
+    color: white;
+}
+
+.modal-title{
+    color: #E38B29;
+}
+
+.modal-body{
+    height: 550px;
+    display: flex;
+}
+
+
+.modal-content{
+    background-color:#FFD8A9;
+}
+
+.steps{
+    display: flex;
+    justify-content: space-around;
+    color: lightgray;
+    width: 60%;
+    margin: auto;
+}
+
+.step1 , .step2{
+    width: 50%;
+}
+
+
+
+.step2{
+    width: 380px;
+    margin: auto;
+    background-color: #FDEEDC;
+    border-radius: 5px;
+    position: fixed;
+    left: 50%;
+    padding-bottom: 20px;
+}
+
+.step2 h5{
+    color: #E38B29;
+    font-weight: bolder;
+}
+
+.cart-item-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color:#FDEEDC;
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cart-item-card div{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-bottom: 0px;
+}
+
+.cart-item-card button{
+    margin-top: 5px;
+    padding: 5px 10px;
+    background-color:inherit;
+    border: 3px solid #E38B29;
+    color: gray;
+}
+
+.bill{
+    width: 80%;
+    margin: auto;
+    background-color: #FDEEDC;
+    padding: 30px;
+
+}
+
+.user-details,.payments{
+    background-color: #FDEEDC;
+    padding: 20px;
+}
+
+.place-order button{
+    width: 100%;
+    height: 40px;
+    background-color: #E38B29;
+    color: white;
+    font-size: large;
+    border: none;
+    border-radius: 5px;
+}
+.place-order {
+    width: 90%;
+    margin: auto;
+}
+
+@media screen and (max-width:1000px){
+    .modal-body{
+        flex-direction: column;
+    }
+
+    .step2{
+        display: block;
+        position: static;
+    }
+
+    .step1{
+        display: block;
+        width: 100%;
+    }
+}
+
+
+
+
