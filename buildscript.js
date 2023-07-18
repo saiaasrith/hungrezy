@@ -23,8 +23,11 @@ async function build() {
     // Clean build directory
     await runCommand('rm -rf dist');
 
-    // Transpile TypeScript or other build tasks
-    await runCommand('tsc');
+    // Install dependencies (if needed)
+    await runCommand('npm install'); // or yarn install
+
+    // Transpile TypeScript (assuming TypeScript is already a dev dependency)
+    await runCommand('npx tsc');
 
     // Copy static files or other build tasks
     await runCommand('cp -R public dist/public');
@@ -32,6 +35,7 @@ async function build() {
     console.log('Build process completed successfully!');
   } catch (error) {
     console.error('Build process failed:', error);
+    process.exit(1); // Exit with a non-zero code to indicate failure
   }
 }
 
