@@ -1,3 +1,0 @@
-# FFSD-PROJECT!
-
-
