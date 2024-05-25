@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="Admin.css">
+    <link rel="stylesheet" href="Admin_AddRecipe.css">
+</head>
+<body>
+    <div class="main-body">
+        <div class="verification-card">
+            <h2>Verification Options</h2>
+            <div class="verification-options">
+                <a href="#">Approve</a>
+                <a href="#">Suspend</a>
+            </div>
+        </div>
+        <div class="approved-restaurants">
+            <h2>Approved Restaurants</h2>
+            <div class="flex-box">
+                <div class="flex-box-items">Restaurant 1</div>
+                <div class="flex-box-items">Restaurant 2</div>
+                <div class="flex-box-items">Restaurant 3</div>
+            </div>
+        </div>
+        <div class="suspended-restaurants">
+            <h2>Suspended Restaurants</h2>
+            <div class="flex-box">
+                <div class="flex-box-items">Restaurant 4</div>
+                <div class="flex-box-items">Restaurant 5</div>
+            </div>
+        </div>
+
+        <div class="recipe-form">
+            <h2 class="heading">Add Recipe</h2>
+            <div class="quick-info">
+                <div>
+                    <label for="recipe-name">Recipe Name</label>
+                    <input type="text" class="form-control" id="recipe-name" placeholder="Enter Recipe Name">
+                </div>
+                <div>
+                    <label for="recipe-category">Recipe Category</label>
+                    <select class="form-select" id="recipe-category">
+                        <option selected>Select Category</option>
+                        <option value="1">Category 1</option>
+                        <option value="2">Category 2</option>
+                        <option value="3">Category 3</option>
+                    </select>
+                </div>
+            </div>
+            <label for="recipe-description">Recipe Description</label>
+            <textarea class="form-control" id="recipe-description" rows="3" placeholder="Enter Recipe Description"></textarea>
+            <label for="recipe-ingredients">Recipe Ingredients</label>
+            <textarea class="form-control" id="recipe-ingredients" rows="3" placeholder="Enter Recipe Ingredients"></textarea>
+            <label for="recipe-instructions">Recipe Instructions</label>
+            <textarea class="form-control" id="recipe-instructions" rows="5" placeholder="Enter Recipe Instructions"></textarea>
+            <div class="add-recipe">
+                <button type="submit">Add Recipe</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>Manage Users</h2>
+            <ul id="user-list">
+                <li>
+                    <th>Username</th>
+                    <th>Action</th>
+                </li>
+            </ul>
+            <button id="close-popup-btn">Close</button>
+        </div>
+    </div>
+    <button id="open-popup-btn">Manage Users</button>
+
+    <script src="Admin.js"></script>
+</body>
+</html>
