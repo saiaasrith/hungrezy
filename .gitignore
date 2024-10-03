@@ -23,10 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
-node_modules/
-views/
-buildscript.js/
-dist/
-sever.db/
-server.js/
-tsconfig.js/
+views
+buildscript.js
+sever.db
+server.js
+tsconfig.js
