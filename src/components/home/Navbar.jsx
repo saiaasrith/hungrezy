@@ -125,6 +125,14 @@ const Navbar = () => {
               isLinkActive("/about") ? "text-black font-bold" : "text-gray-500"
             } hover:text-amber-500 transition-colors duration-300 hover:scale-110 hover:opacity-80`}
           >
+            Careers
+          </Link>
+          <Link
+            to="/Careers"
+            className={`${
+              isLinkActive("/about") ? "text-black font-bold" : "text-gray-500"
+            } hover:text-amber-500 transition-colors duration-300 hover:scale-110 hover:opacity-80`}
+          >
             About
           </Link>
         </div>
