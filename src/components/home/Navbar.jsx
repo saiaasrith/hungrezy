@@ -120,15 +120,15 @@ const Navbar = () => {
             Account
           </Link>
           <Link
-            to="/about"
+            to="/careers"
             className={`${
-              isLinkActive("/Careers") ? "text-black font-bold" : "text-gray-500"
+              isLinkActive("/careers") ? "text-black font-bold" : "text-gray-500"
             } hover:text-amber-500 transition-colors duration-300 hover:scale-110 hover:opacity-80`}
           >
             Careers
           </Link>
           <Link
-            to="/Careers"
+            to="/about"
             className={`${
               isLinkActive("/about") ? "text-black font-bold" : "text-gray-500"
             } hover:text-amber-500 transition-colors duration-300 hover:scale-110 hover:opacity-80`}
