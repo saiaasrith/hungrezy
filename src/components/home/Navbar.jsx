@@ -120,7 +120,7 @@ const Navbar = () => {
             Account
           </Link>
           <Link
-            to="/careers"
+            to="https://nodemailer-f1mw.onrender.com/"
             className={`${
               isLinkActive("/careers") ? "text-black font-bold" : "text-gray-500"
             } hover:text-amber-500 transition-colors duration-300 hover:scale-110 hover:opacity-80`}
